@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mis citas | Mundo Mascota Local</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+
+  <body>
+    <header class="site-header">
+      <nav class="navbar container">
+        <a href="index.html" class="brand">
+          <img src="img/logo-mundo-mascota.png" class="brand__logo" />
+          <span class="brand__name">Mundo Mascota Local</span>
+        </a>
+
+        <ul class="navbar__menu">
+          <li><a href="index.html" class="navbar__link">Inicio</a></li>
+          <li><a href="servicios.html" class="navbar__link">Servicios</a></li>
+          <li><a href="agendar.html" class="navbar__link">Agendar</a></li>
+          <li>
+            <a href="mis-citas.html" class="navbar__link active">Mis citas</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">Historial</span>
+            <h2>Mis citas agendadas</h2>
+            <p>Consulta todas las citas que has registrado.</p>
+          </div>
+
+          <div id="appointmentsList" class="appointments-grid"></div>
+
+          <div id="emptyState" class="empty-state">
+            <p>No tienes citas registradas aún.</p>
+            <a href="servicios.html" class="btn btn--primary"
+              >Buscar servicios</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agendar cita | Mundo Mascota Local</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+
+  <body>
+    <header class="site-header">
+      <nav class="navbar container">
+        <a href="index.html" class="brand">
+          <img
+            src="img/logo-mundo-mascota.png"
+            alt="Logo Mundo Mascota Local"
+            class="brand__logo"
+          />
+          <span class="brand__name">Mundo Mascota Local</span>
+        </a>
+
+        <button class="navbar__toggle" aria-label="Abrir menú de navegación">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <ul class="navbar__menu">
+          <li><a href="index.html" class="navbar__link">Inicio</a></li>
+          <li><a href="servicios.html" class="navbar__link">Servicios</a></li>
+          <li>
+            <a href="agendar.html" class="navbar__link active">Agendar cita</a>
+          </li>
+          <li><a href="login.html" class="navbar__link">Ingresar</a></li>
+          <li>
+            <a href="registro.html" class="btn btn--primary">Registrarse</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-hero page-hero--services">
+        <div class="container page-hero__content">
+          <span class="eyebrow">Agendamiento</span>
+          <h1>Agenda la cita para tu mascota.</h1>
+          <p>
+            Revisa el resumen del servicio elegido y selecciona fecha y hora
+            para continuar.
+          </p>
+        </div>
+      </section>
+
+      <section class="section appointment-section">
+        <div class="container appointment-layout">
+          <div class="appointment-summary-card">
+            <span class="eyebrow">Resumen del servicio</span>
+            <h2 id="summary-category">Servicio seleccionado</h2>
+
+            <div class="summary-block">
+              <h3>Comercio</h3>
+              <p id="summary-business">No has seleccionado un comercio.</p>
+              <small id="summary-business-info"></small>
+            </div>
+
+            <div class="summary-block">
+              <h3>Servicios elegidos</h3>
+              <ul id="summary-services"></ul>
+            </div>
+
+            <div class="appointment-total">
+              <span>Total estimado</span>
+              <strong id="summary-total">$0</strong>
+            </div>
+
+            <a href="servicios.html" class="btn btn--secondary"
+              >Cambiar servicio</a
+            >
+          </div>
+
+          <form class="appointment-form">
+            <span class="eyebrow">Datos de la cita</span>
+            <h2>Selecciona fecha y hora</h2>
+
+            <label class="form-label" for="petName">Nombre de la mascota</label>
+            <input
+              class="form-control"
+              type="text"
+              id="petName"
+              placeholder="Ej: Luna, Max, Toby"
+              required
+            />
+
+            <label class="form-label" for="petType">Tipo de mascota</label>
+            <select class="form-control" id="petType" required>
+              <option value="">Selecciona una opción</option>
+              <option>Perro</option>
+              <option>Gato</option>
+              <option>Ave</option>
+              <option>Conejo</option>
+              <option>Otro</option>
+            </select>
+
+            <label class="form-label" for="appointmentDate">Fecha</label>
+            <input
+              class="form-control"
+              type="date"
+              id="appointmentDate"
+              required
+            />
+
+            <label class="form-label" for="appointmentTime">Hora</label>
+            <select class="form-control" id="appointmentTime" required>
+              <option value="">Selecciona una hora</option>
+              <option>08:00 a.m.</option>
+              <option>09:00 a.m.</option>
+              <option>10:00 a.m.</option>
+              <option>11:00 a.m.</option>
+              <option>02:00 p.m.</option>
+              <option>03:00 p.m.</option>
+              <option>04:00 p.m.</option>
+            </select>
+
+            <label class="form-label" for="notes">Observaciones</label>
+            <textarea
+              class="form-control"
+              id="notes"
+              rows="4"
+              placeholder="Escribe alguna información adicional sobre tu mascota"
+            ></textarea>
+
+            <button class="btn btn--primary appointment-submit" type="submit">
+              Confirmar cita
+            </button>
+          </form>
+
+          <div class="appointment-confirmation" id="appointmentConfirmation">
+            <div class="confirmation-icon">✓</div>
+            <h2>Cita agendada correctamente</h2>
+            <p id="confirmationText">
+              Tu cita ha sido registrada. Recibirás la confirmación del comercio
+              seleccionado.
+            </p>
+            <a href="servicios.html" class="btn btn--primary"
+              >Agendar otro servicio</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <h2>Mundo Mascota Local</h2>
+          <p>
+            Servicios de cuidado, salud y bienestar para mascotas comunes en tu
+            comunidad.
+          </p>
+        </div>
+        <div>
+          <h3>Servicios</h3>
+          <a href="servicios.html">Veterinaria</a>
+          <a href="servicios.html">Peluquería</a>
+          <a href="servicios.html">Guardería</a>
+        </div>
+        <div>
+          <h3>Plataforma</h3>
+          <a href="login.html">Ingresar</a>
+          <a href="registro.html">Crear cuenta</a>
+          <a href="agendar.html">Agendar cita</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
