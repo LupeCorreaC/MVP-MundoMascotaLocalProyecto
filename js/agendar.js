@@ -40,15 +40,19 @@ if (form) {
     }
 
     const nuevaCita = {
-      ...appointmentData,
-      petName: document.querySelector("#petName").value.trim(),
-      petType: document.querySelector("#petType").value,
-      appointmentDate: document.querySelector("#appointmentDate").value,
-      appointmentTime: document.querySelector("#appointmentTime").value,
-      notes: document.querySelector("#notes").value.trim(),
-      status: "confirmada",
-      createdAt: new Date().toISOString(),
-    };
+  businessName: appointmentData.businessName,
+  services: appointmentData.services,
+  total: appointmentData.total,
+
+  petName: petName,
+  petType: petType,
+  appointmentDate: date,
+  appointmentTime: time,
+
+  notes: document.querySelector("#notes").value.trim(),
+  status: "confirmada",
+  createdAt: new Date().toISOString(),
+};
 
     const citas =
       JSON.parse(localStorage.getItem("mundoMascotaHistorialCitas")) || [];
