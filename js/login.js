@@ -21,7 +21,7 @@ if (loginForm) {
 
     localStorage.setItem("mundoMascotaUsuarioActivo", JSON.stringify(user));
 
-    alert(Bienvenido, ${user.name});
+    alert(`Bienvenido, ${user.name}`);
 
     window.location.href = "servicios.html";
   });
