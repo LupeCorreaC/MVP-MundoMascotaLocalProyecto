@@ -23,6 +23,6 @@ if (loginForm) {
 
     alert(`Bienvenido, ${user.name}`);
 
-    window.location.href = "servicios.html";
+    window.location.href = "./servicios.html";
   });
 }
