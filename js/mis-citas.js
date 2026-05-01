@@ -13,7 +13,7 @@ if (citas.length === 0) {
     div.classList.add("appointment-card");
 
     const serviciosHTML = (cita.services || [])
-      .map(s => <li>${s.name}</li>)
+      .map(s => `<li>${s.name}</li>`)
       .join("");
 
     div.innerHTML = `
