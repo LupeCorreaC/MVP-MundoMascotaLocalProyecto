@@ -39,6 +39,6 @@ if (registerForm) {
 
     alert("Registro exitoso. Ahora puedes iniciar sesión.");
 
-    window.location.href = "login.html";
+    window.location.href = "./login.html";
   });
 }
