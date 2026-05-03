@@ -1,71 +1,93 @@
-const appointmentData = JSON.parse(localStorage.getItem("mundoMascotaCita"));
+document.addEventListener("DOMContentLoaded", () => {
+  const appointmentData =
+    JSON.parse(localStorage.getItem("mundoMascotaCita")) || null;
 
-if (appointmentData) {
-  document.querySelector("#summary-category").textContent = appointmentData.category;
-  document.querySelector("#summary-business").textContent = appointmentData.businessName;
+  const form = document.querySelector(".appointment-form");
+  const confirmation = document.querySelector("#appointmentConfirmation");
 
-  const list = document.querySelector("#summary-services");
-  list.innerHTML = "";
+  const summaryCategory = document.querySelector("#summary-category");
+  const summaryBusiness = document.querySelector("#summary-business");
+  const summaryServices = document.querySelector("#summary-services");
+  const summaryTotal = document.querySelector("#summary-total");
 
-  appointmentData.services.forEach(service => {
-  const li = document.createElement("li");
+  if (appointmentData) {
+    summaryCategory.textContent =
+      appointmentData.category || "Servicio seleccionado";
 
-  const priceFormatted = new Intl.NumberFormat("es-CO", {
-    style: "currency",
-    currency: "COP",
-    maximumFractionDigits: 0,
-  }).format(service.price);
+    summaryBusiness.textContent =
+      appointmentData.businessName || "Comercio seleccionado";
 
-  li.innerHTML = `
-    <strong>${service.name}</strong>
-    <span>${priceFormatted}</span>
-  `;
+    summaryServices.innerHTML = "";
 
-  list.appendChild(li);
-});
+    const services = appointmentData.services || [];
 
-  document.querySelector("#summary-total").textContent = appointmentData.total;
-}
-const form = document.querySelector(".appointment-form");
-const confirmation = document.querySelector("#appointmentConfirmation");
+    services.forEach((service) => {
+      const li = document.createElement("li");
 
-if (form) {
-  form.addEventListener("submit", (e) => {
-  e.preventDefault();
+      const priceFormatted = new Intl.NumberFormat("es-CO", {
+        style: "currency",
+        currency: "COP",
+        maximumFractionDigits: 0,
+      }).format(service.price || 0);
 
-  if (!appointmentData) {
-    alert("No hay un servicio seleccionado. Primero elige un servicio.");
-    window.location.href = "./servicios.html";
-    return;
+      li.innerHTML = `
+        <strong>${service.name || "Servicio"}</strong>
+        <span>${priceFormatted}</span>
+      `;
+
+      summaryServices.appendChild(li);
+    });
+
+    summaryTotal.textContent = appointmentData.total || "$0";
   }
 
-  const petName = document.querySelector("#petName").value.trim();
-  const petType = document.querySelector("#petType").value;
-  const appointmentDate = document.querySelector("#appointmentDate").value;
-  const appointmentTime = document.querySelector("#appointmentTime").value;
-  const notes = document.querySelector("#notes").value.trim();
+  if (form) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
 
-  const nuevaCita = {
-    businessName: appointmentData.businessName,
-    services: appointmentData.services,
-    total: appointmentData.total,
-    petName,
-    petType,
-    appointmentDate,
-    appointmentTime,
-    notes,
-    status: "confirmada",
-    createdAt: new Date().toISOString(),
-  };
+      if (!appointmentData) {
+        alert("No hay un servicio seleccionado. Primero elige un servicio.");
+        window.location.href = "./servicios.html";
+        return;
+      }
 
-  const citas =
-    JSON.parse(localStorage.getItem("mundoMascotaHistorialCitas")) || [];
+      const petName = document.querySelector("#petName").value.trim();
+      const petType = document.querySelector("#petType").value;
+      const appointmentDate = document.querySelector("#appointmentDate").value;
+      const appointmentTime = document.querySelector("#appointmentTime").value;
+      const notes = document.querySelector("#notes").value.trim();
 
-  citas.push(nuevaCita);
+      if (!petName || !petType || !appointmentDate || !appointmentTime) {
+        alert("Por favor completa todos los campos obligatorios.");
+        return;
+      }
 
-  localStorage.setItem("mundoMascotaHistorialCitas", JSON.stringify(citas));
+      const nuevaCita = {
+        businessName: appointmentData.businessName || "Comercio seleccionado",
+        services: appointmentData.services || [],
+        total: appointmentData.total || "$0",
+        petName,
+        petType,
+        appointmentDate,
+        appointmentTime,
+        notes,
+        status: "confirmada",
+        createdAt: new Date().toISOString(),
+      };
 
-  form.style.display = "none";
-  confirmation.classList.add("is-visible");
+      const citas =
+        JSON.parse(localStorage.getItem("mundoMascotaHistorialCitas")) || [];
+
+      citas.push(nuevaCita);
+
+      localStorage.setItem(
+        "mundoMascotaHistorialCitas",
+        JSON.stringify(citas)
+      );
+
+      alert("Cita agendada correctamente.");
+
+      window.location.href = "./mis-citas.html";
+    });
+  }
 });
-}
