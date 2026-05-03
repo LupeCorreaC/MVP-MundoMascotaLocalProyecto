@@ -68,3 +68,4 @@ if (form) {
   form.style.display = "none";
   confirmation.classList.add("is-visible");
 });
+}
