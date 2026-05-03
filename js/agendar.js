@@ -31,43 +31,40 @@ const confirmation = document.querySelector("#appointmentConfirmation");
 
 if (form) {
   form.addEventListener("submit", (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    if (!appointmentData) {
-      alert("No hay un servicio seleccionado. Primero elige un servicio.");
-      window.location.href = "./servicios.html";
-      return;
-    }
+  if (!appointmentData) {
+    alert("No hay un servicio seleccionado. Primero elige un servicio.");
+    window.location.href = "./servicios.html";
+    return;
+  }
 
-    const nuevaCita = {
-  businessName: appointmentData.businessName,
-  services: appointmentData.services,
-  total: appointmentData.total,
+  const petName = document.querySelector("#petName").value.trim();
+  const petType = document.querySelector("#petType").value;
+  const appointmentDate = document.querySelector("#appointmentDate").value;
+  const appointmentTime = document.querySelector("#appointmentTime").value;
+  const notes = document.querySelector("#notes").value.trim();
 
-  petName: petName,
-  petType: petType,
-  appointmentDate: date,
-  appointmentTime: time,
+  const nuevaCita = {
+    businessName: appointmentData.businessName,
+    services: appointmentData.services,
+    total: appointmentData.total,
+    petName,
+    petType,
+    appointmentDate,
+    appointmentTime,
+    notes,
+    status: "confirmada",
+    createdAt: new Date().toISOString(),
+  };
 
-  notes: document.querySelector("#notes").value.trim(),
-  status: "confirmada",
-  createdAt: new Date().toISOString(),
-};
+  const citas =
+    JSON.parse(localStorage.getItem("mundoMascotaHistorialCitas")) || [];
 
-    const citas =
-      JSON.parse(localStorage.getItem("mundoMascotaHistorialCitas")) || [];
+  citas.push(nuevaCita);
 
-    citas.push(nuevaCita);
+  localStorage.setItem("mundoMascotaHistorialCitas", JSON.stringify(citas));
 
-    localStorage.setItem("mundoMascotaHistorialCitas", JSON.stringify(citas));
-
-    console.log("Cita guardada:", nuevaCita);
-    console.log(
-      "Historial completo:",
-      localStorage.getItem("mundoMascotaHistorialCitas")
-    );
-
-    form.style.display = "none";
-    confirmation.classList.add("is-visible");
-  });
-}
+  form.style.display = "none";
+  confirmation.classList.add("is-visible");
+});
