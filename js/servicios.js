@@ -74,24 +74,36 @@ document.querySelectorAll(".schedule-service-btn").forEach((button) => {
   button.addEventListener("click", () => {
     const modal = button.closest(".service-modal");
 
+    const checkedBusiness = modal.querySelector(".business-option input:checked");
+    const businessCard = checkedBusiness.closest(".business-option");
+
     const selectedServices = [];
+
     modal.querySelectorAll(".service-price-check:checked").forEach((check) => {
       const card = check.closest(".priced-service-card");
 
       selectedServices.push({
-        name: card.querySelector("strong").textContent,
-        price: Number(check.dataset.price)
+        name: card.querySelector("strong").textContent.trim(),
+        price: Number(check.dataset.price),
       });
     });
 
+    if (selectedServices.length === 0) {
+      alert("Selecciona al menos un servicio.");
+      return;
+    }
+
     const data = {
-      category: modal.querySelector(".eyebrow").textContent,
-      businessName: modal.querySelector("strong").textContent,
+      category: modal.querySelector(".eyebrow").textContent.trim(),
+      businessName: businessCard.querySelector("strong").textContent.trim(),
       services: selectedServices,
-      total: modal.querySelector(".modal-total-value").textContent
+      total: modal.querySelector(".modal-total-value").textContent.trim(),
     };
 
     localStorage.setItem("mundoMascotaCita", JSON.stringify(data));
-    window.location.href = "agendar.html";
+
+    console.log("Servicio guardado:", data);
+
+    window.location.href = "./agendar.html";
   });
 });
