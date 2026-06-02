@@ -1,24 +1,12 @@
 {
-  "name": "mundo-mascota-local-2.0",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --coverage"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/YilmarArdila/mundo-mascota-local.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/YilmarArdila/mundo-mascota-local/issues"
-  },
-  "homepage": "https://github.com/YilmarArdila/mundo-mascota-local#readme",
   "devDependencies": {
-    "@playwright/test": "^1.60.0"
+    "jest": "^30.4.2",
+    "jest-environment-jsdom": "^30.4.1"
+  },
+  "jest": {
+    "testEnvironment": "jsdom"
   }
 }
