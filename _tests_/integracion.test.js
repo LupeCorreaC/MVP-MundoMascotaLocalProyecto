@@ -121,7 +121,7 @@ describe("Pruebas de integración - Mundo Mascota Local", () => {
     expect(servicioGuardado.services || servicioGuardado.servicios).toHaveLength(1);
     const serviciosGuardados = servicioGuardado.services || servicioGuardado.servicio
 expect(serviciosGuardados[0].name || serviciosGuardados[0].nombre).toBe(
-  "Baño general
+  "Baño general"
     );
     expect(servicioGuardado.total).toBe("35.000 $");
   });
