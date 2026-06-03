@@ -1,3 +1,8 @@
+/**
+ * Maneja la carga inicial de la página de agendamiento de citas.
+ * Recupera la información del servicio seleccionado desde localStorage
+ * y actualiza la interfaz con el resumen de la cita.
+ */
 document.addEventListener("DOMContentLoaded", () => {
   const appointmentData =
     JSON.parse(localStorage.getItem("mundoMascotaCita")) || null;
@@ -42,6 +47,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   if (form) {
+    /**
+     * Maneja el envío del formulario de agendamiento de citas.
+     * Valida los campos obligatorios y guarda la cita en localStorage.
+     */
     form.addEventListener("submit", (e) => {
       e.preventDefault();
 
