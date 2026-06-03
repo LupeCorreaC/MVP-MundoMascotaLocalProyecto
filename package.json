@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "test": "jest _pruebas_ --coverage"
+    "test": "jest --testMatch \"**/_pruebas_/**/*.test.js\" --coverage"
   },
   "devDependencies": {
     "jest": "^30.4.2",
