@@ -48,3 +48,4 @@ MVP-MUNDOMASCOTALOCALPROYECTO/
 ├── .gitignore
 └── README.md
 ```
+Pipeline CI/CD configurado con GitHub Actions para ejecutar lint, build y pruebas automatizadas.
