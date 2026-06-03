@@ -29,7 +29,7 @@ describe("Pruebas de integración - Mundo Mascota Local", () => {
       </form>
     `;
 
-    require("../js/main.js");
+    require("../js/registro.js");
 
     const form = document.querySelector("#registerForm");
 
@@ -99,7 +99,7 @@ describe("Pruebas de integración - Mundo Mascota Local", () => {
       </div>
     `;
 
-    require("../js/main.js");
+    require("../js/servicios.js");
 
     const botonAgendar = document.querySelector(".schedule-service-btn");
 
@@ -173,7 +173,7 @@ describe("Pruebas de integración - Mundo Mascota Local", () => {
     </div>
   `;
 
-  require("../js/main.js");
+  require("../js/agendar.js");
 
   const form = document.querySelector(".appointment-form");
 
