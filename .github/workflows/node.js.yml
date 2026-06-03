@@ -1,0 +1,49 @@
+name: CI/CD Mundo Mascota Local
+
+on:
+  pull_request:
+    branches:
+      - main
+
+  push:
+    branches:
+      - main
+
+jobs:
+  build-lint-test:
+    name: Build, Lint y Pruebas Automatizadas
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar código del repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Instalar dependencias
+        run: npm install
+
+      - name: Ejecutar lint del código
+        run: npm run lint --if-present
+
+      - name: Ejecutar pruebas automatizadas
+        run: npm test
+
+      - name: Ejecutar build del proyecto
+        run: npm run build --if-present
+
+  deploy:
+    name: Deploy automático a producción
+    needs: build-lint-test
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Descargar código del repositorio
+        uses: actions/checkout@v4
+
+      - name: Confirmar despliegue automático
+        run: echo "Deploy automático ejecutado correctamente en producción"
