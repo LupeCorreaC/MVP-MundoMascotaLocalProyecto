@@ -49,3 +49,4 @@ MVP-MUNDOMASCOTALOCALPROYECTO/
 └── README.md
 ```
 Pipeline CI/CD configurado con GitHub Actions para ejecutar lint, build y pruebas automatizadas.
+El flujo de integración continua se ejecuta automáticamente al realizar cambios en la rama main.
