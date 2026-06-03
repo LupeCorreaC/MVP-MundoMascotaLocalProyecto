@@ -1,3 +1,16 @@
+/**
+ * Maneja el proceso de registro de usuarios en el sistema.
+ * Captura los datos del formulario, valida que todos los campos estén completos
+ * y prepara la información del usuario para su posterior almacenamiento.
+ *
+ * Flujo del proceso:
+ * 1. Detecta el envío del formulario de registro
+ * 2. Previene el comportamiento por defecto del formulario
+ * 3. Captura y limpia los datos ingresados por el usuario
+ * 4. Valida que todos los campos estén completos
+ * 5. Si falta información, muestra una alerta y detiene el proceso
+ */
+
 const registerForm = document.querySelector("#registerForm");
 
 if (registerForm) {
@@ -14,7 +27,6 @@ if (registerForm) {
       alert("Por favor completa todos los campos.");
       return;
     }
-
     const users =
       JSON.parse(localStorage.getItem("mundoMascotaUsuarios")) || [];
 
